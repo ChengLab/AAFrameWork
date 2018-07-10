@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>ChengTian</Authors>
+    <Company>AA</Company>
+    <Description>AA框架</Description>
+  </PropertyGroup>
+
+</Project>
