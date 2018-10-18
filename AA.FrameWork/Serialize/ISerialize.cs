@@ -6,6 +6,6 @@ namespace AA.FrameWork.Serialize
 {
    public interface ISerialize
     {
-
+         
     }
 }
