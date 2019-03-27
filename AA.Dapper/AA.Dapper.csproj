@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="dbproviders.netstandard.properties" />
+    <None Remove="dbproviders.properties" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="dbproviders.netstandard.properties" />
+    <EmbeddedResource Include="dbproviders.properties" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper.FluentMap.Dommel" Version="1.6.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AA.FrameWork\AA.FrameWork.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -10,7 +10,11 @@ namespace AA.Log4Net
     {
         public FrameWork.Logging.ILog Get(string name)
         {
+#if NETCORE
             var logger = LogManager.GetLogger(System.Reflection.Assembly.GetEntryAssembly(), name);
+#else
+            var logger = LogManager.GetLogger(name);
+#endif
             return new Log4NetLog(logger);
         }
 

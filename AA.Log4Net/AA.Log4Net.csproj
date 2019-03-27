@@ -1,11 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ChengTian</Authors>
     <Company>AA</Company>
     <Product>AA</Product>
+    <PackageProjectUrl>https://github.com/ChengLab/AAFrameWork</PackageProjectUrl>
+    <PackageTags>AA;Log4Net</PackageTags>
+    <RepositoryUrl>https://github.com/ChengLab/AAFrameWork</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Description>AA框架 Log4Net logger support</Description>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <DefineConstants>$(DefineConstants);NETCORE</DefineConstants>
+  </PropertyGroup>
+
+
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net452|AnyCPU'">
+    <DocumentationFile>bin\Debug\net452\AA.Log4Net.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
