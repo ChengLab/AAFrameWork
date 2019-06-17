@@ -17,4 +17,8 @@
     <DocumentationFile>bin\Debug\net452\AA.FrameWork.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Ioc\" />
+  </ItemGroup>
+
 </Project>

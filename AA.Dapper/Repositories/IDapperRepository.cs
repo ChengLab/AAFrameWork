@@ -74,6 +74,7 @@ namespace AA.Dapper.Repositories
         /// <returns></returns>
         IEnumerable<TEntity> GetAll();
         Task<IEnumerable<TEntity>> GetAllAsync();
+ 
         #endregion
 
         #region Select

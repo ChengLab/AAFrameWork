@@ -1,4 +1,7 @@
 ﻿using AA.Dapper;
+using AA.FrameWork.Tests.Unit.dapper.Init;
+using AADemo.DataAccess.Repository;
+using AADemo.Domain.Repository;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -7,15 +10,21 @@ using Xunit;
 
 namespace AA.FrameWork.Tests.Unit.dapper
 {
-   public class DapperContextTest
+    public class DapperContextTest
     {
         [Fact]
         public void TextDapperContext()
         {
-            IDapperContext dapperContext = new DapperContext(new  NameValueCollection() {
+            DbEntityMap.Map();
+            IDapperContext dapperContext = new DapperContext(new NameValueCollection()
+            {
                 ["aa.dataSource.AaCenter.connectionString"] = "Data Source =.; Initial Catalog = AaCenter;User ID = sa; Password = 123;",
                 ["aa.dataSource.AaCenter.provider"] = "SqlServer"
             });
+            IUserInfoRepository _userInforepository = new UserInfoRepository(dapperContext);
+
+            var users = _userInforepository.GetAll();
+
         }
 
 

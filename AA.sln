@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.Dapper", "AA.Dapper\AA.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.RabbitMQ", "AA.RabbitMQ\AA.RabbitMQ.csproj", "{55D0603C-84C8-4D51-87DF-D8B7050DDCBF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA.FrameWork.Tests.Unit", "AA.FrameWork.Tests.Unit\AA.FrameWork.Tests.Unit.csproj", "{9F73E237-5483-486F-A03A-111F6F7A0282}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.FrameWork.Tests.Unit", "AA.FrameWork.Tests.Unit\AA.FrameWork.Tests.Unit.csproj", "{9F73E237-5483-486F-A03A-111F6F7A0282}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

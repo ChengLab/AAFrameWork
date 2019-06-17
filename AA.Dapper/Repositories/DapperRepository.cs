@@ -4,7 +4,6 @@ using System.Data;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Dommel;
-
 namespace AA.Dapper.Repositories
 {
     public class DapperRepository<TEntity> : IDapperRepository<TEntity>
@@ -22,12 +21,12 @@ namespace AA.Dapper.Repositories
         /// Insert entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public object Insert(TEntity entity, IDbTransaction transaction = null)
+        public virtual object Insert(TEntity entity, IDbTransaction transaction = null)
         {
             return Connection.Insert(entity, transaction);
         }
 
-        public Task<object> InsertAsync(TEntity entity, IDbTransaction transaction = null)
+        public virtual Task<object> InsertAsync(TEntity entity, IDbTransaction transaction = null)
         {
             return Connection.InsertAsync(entity, transaction);
         }
@@ -38,23 +37,23 @@ namespace AA.Dapper.Repositories
         /// Delete entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public bool Delete(TEntity entity, IDbTransaction transaction = null)
+        public virtual bool Delete(TEntity entity, IDbTransaction transaction = null)
         {
             return Connection.Delete(entity, transaction);
         }
 
-        public Task<bool> DeleteAsync(TEntity entity, IDbTransaction transaction = null)
+        public virtual Task<bool> DeleteAsync(TEntity entity, IDbTransaction transaction = null)
         {
             return Connection.DeleteAsync(entity, transaction);
         }
 
 
-        public bool DeleteMultiple(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
+        public virtual bool DeleteMultiple(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
         {
             return Connection.DeleteMultiple(predicate, transaction);
         }
 
-        public Task<bool> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
+        public virtual Task<bool> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
         {
             return Connection.DeleteMultipleAsync(predicate, transaction);
         }
@@ -68,12 +67,12 @@ namespace AA.Dapper.Repositories
         /// <param name="entity"></param>
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
-        public bool Update(TEntity entity, IDbTransaction transaction = null)
+        public virtual bool Update(TEntity entity, IDbTransaction transaction = null)
         {
             return Connection.Update(entity, transaction);
         }
 
-        public  Task<bool> UpdateAsync(TEntity entity, IDbTransaction transaction = null)
+        public virtual Task<bool> UpdateAsync(TEntity entity, IDbTransaction transaction = null)
         {
             return  Connection.UpdateAsync(entity, transaction);
         }
@@ -87,12 +86,12 @@ namespace AA.Dapper.Repositories
         /// </summary>
         /// <param name="id">Identifier</param>
         /// <returns>Entity</returns>
-        public TEntity Get(object id)
+        public virtual TEntity Get(object id)
         {
             return Connection.Get<TEntity>(id);
         }
 
-        public Task<TEntity> GetAsync(object id)
+        public virtual Task<TEntity> GetAsync(object id)
         {
             return Connection.GetAsync<TEntity>(id);
         }
@@ -102,15 +101,16 @@ namespace AA.Dapper.Repositories
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
         /// <returns></returns>
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return Connection.GetAll<TEntity>();
         }
 
-        public Task<IEnumerable<TEntity>> GetAllAsync()
+        public virtual Task<IEnumerable<TEntity>> GetAllAsync()
         {
             return Connection.GetAllAsync<TEntity>();
         }
+
         #endregion
 
         #region Select
@@ -121,12 +121,12 @@ namespace AA.Dapper.Repositories
         /// <param name="predicate"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public IEnumerable<TEntity> Select(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
+        public virtual IEnumerable<TEntity> Select(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
         {
             return Connection.Select(predicate);
         }
 
-        public Task<IEnumerable<TEntity>> SelectAsync(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
+        public virtual Task<IEnumerable<TEntity>> SelectAsync(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
         {
             return Connection.SelectAsync(predicate);
         }
@@ -136,17 +136,17 @@ namespace AA.Dapper.Repositories
         /// <param name="predicate"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
+        public virtual TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate)
         {
             return Connection.FirstOrDefault<TEntity>(predicate);
         }
 
-        public Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return Connection.FirstOrDefaultAsync<TEntity>(predicate);
         }
         #endregion
 
-
+     
     }
 }

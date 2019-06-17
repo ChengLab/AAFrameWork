@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AA.Dapper.Util;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
@@ -13,7 +14,7 @@ namespace AA.Dapper
         void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.RepeatableRead);
         void Commit();
         void RollBack();
-
+         DataBase DataBase { get; }
 
     }
 }

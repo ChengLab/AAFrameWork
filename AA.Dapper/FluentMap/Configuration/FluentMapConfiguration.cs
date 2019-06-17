@@ -1,0 +1,77 @@
+﻿using System;
+using System.Linq;
+using System.ComponentModel;
+using AA.Dapper.FluentMap.Conventions;
+using AA.Dapper.FluentMap.Mapping;
+
+namespace AA.Dapper.FluentMap.Configuration
+{
+    /// <summary>
+    /// Defines methods for configuring AA.Dapper.FluentMap.
+    /// </summary>
+    public class FluentMapConfiguration
+    {
+        /// <summary>
+        /// Adds the specified <see cref="T:AA.Dapper.FluentMap.Mapping.EntityMap"/> to the configuration of AA.Dapper.FluentMap.
+        /// </summary>
+        /// <typeparam name="TEntity">The type argument of the entity.</typeparam>
+        /// <param name="mapper">
+        /// An instance of the <see cref="T:AA.Dapper.FluentMap.Mapping.IEntityMap"/> interface containing the
+        /// entity mapping configuration.
+        /// </param>
+        public void AddMap<TEntity>(IEntityMap<TEntity> mapper) where TEntity : class
+        {
+            if (FluentMapper.EntityMaps.TryAdd(typeof(TEntity), mapper))
+            {
+                FluentMapper.AddTypeMap<TEntity>();
+            }
+            else
+            {
+                throw new InvalidOperationException($"Adding entity map for type '{typeof(TEntity)}' failed. The type already exists. Current entity maps: " + string.Join(", ", FluentMapper.EntityMaps.Select(e => e.Key.ToString())));
+            }
+        }
+
+        /// <summary>
+        /// Adds the specified <see cref="T:AA.Dapper.FluentMap.Conventions.Convention"/> to the configuration of AA.Dapper.FluentMap.
+        /// </summary>
+        /// <typeparam name="TConvention">The type of the convention.</typeparam>
+        /// <returns>
+        /// An instance of <see cref="T:AA.Dapper.FluentMap.Configuration.FluentConventionConfiguration"/>
+        /// which allows configuration of the convention.
+        /// </returns>
+        public FluentConventionConfiguration AddConvention<TConvention>() where TConvention : Convention, new()
+        {
+            return new FluentConventionConfiguration(new TConvention());
+        }
+
+        #region EditorBrowsableStates
+        /// <inheritdoc/>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
+        /// <inheritdoc/>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object obj)
+        {
+            return base.Equals(obj);
+        }
+
+        /// <inheritdoc/>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <inheritdoc/>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public new Type GetType()
+        {
+            return base.GetType();
+        }
+        #endregion
+    }
+}

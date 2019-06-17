@@ -20,6 +20,7 @@ namespace AA.Dapper
         private readonly string _connectionString;
         private IDbConnection _connection = null;
         public IDbTransaction dbTransaction = null;
+
         public DapperContext(NameValueCollection props)
         {
             IDbConnectionManager dbMgr = null;
@@ -61,14 +62,20 @@ namespace AA.Dapper
             }
 
 
-             //_connectionString = nameOrConnectionString;
+            //_connectionString = nameOrConnectionString;
         }
 
         /// <summary>
         /// Get or set the datasource name.
         /// </summary>
         public string DataSource { get; set; }
-
+        public DataBase DataBase
+        {
+            get
+            {
+                return new DataBase(this);
+            }
+        }
         /// <summary>
         /// Get or set the database connection manager.
         /// </summary>
