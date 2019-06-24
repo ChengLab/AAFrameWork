@@ -120,6 +120,12 @@ public class UserInfoRepository : DapperRepository<UserInfo>, IUserInfoRepositor
         }
     }
 ```
-待写.....
+## AA.Log4Net 用法
+
+1. log4net.config 配置，并将log4net.config的属性->复制到输出目录->设置为->始终复制
+1.  Log4NetLogger.Use("配置文件名或者路径+配置文件名"); 例如：log4net.config文件在根目录下，Log4NetLogger.Use("log4net.config");如果在自定义文件中；例如config/log4net.config 则Log4NetLogger.Use("config/log4net.config")
+1. ILog log= Logger.Get(typeof(类));
+log.Debug("example");
+
 
 
