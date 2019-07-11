@@ -115,7 +115,7 @@ public class UserInfoRepository : DapperRepository<UserInfo>, IUserInfoRepositor
 
         public IEnumerable<UserInfo> QueryAll()
         {
-            var result = _dapperContext.DataBase.Query<UserInfo>("SELECT * from  [Sys_UserInfo]");//实例
+            var result = DapperContext.Current.DataBase.Query<UserInfo>("SELECT * from  [Sys_UserInfo]");//实例
             return result;
         }
     }
