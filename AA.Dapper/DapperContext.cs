@@ -1,5 +1,6 @@
 ﻿using AA.Dapper.Util;
 using AA.FrameWork.Extensions;
+using AA.FrameWork.Util;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -14,18 +15,29 @@ namespace AA.Dapper
         public const string PropertyDataSourcePrefix = "aa.dataSource";
         public const string PropertyDataSourceProvider = "provider";
         public const string PropertyDataSourceConnectionString = "connectionString";
-
+        private static readonly string contextName = "_AADapperContext_";
 
         private PropertiesParser cfg;
         private readonly string _connectionString;
         private IDbConnection _connection = null;
         public IDbTransaction dbTransaction = null;
+        public static DapperContext Current
+        {
+            get {
 
+                object obj = ForCallContext.GetData(contextName);
+                if (obj==null)
+                {
+                    throw new Exception("AA dapper context is empty");
+                }
+                return (DapperContext)obj;
+            }
+        }
         public DapperContext(NameValueCollection props)
         {
             IDbConnectionManager dbMgr = null;
             cfg = new PropertiesParser(props);
-
+            
             var dsNames = cfg.GetPropertyGroups(PropertyDataSourcePrefix);
             foreach (string dataSourceName in dsNames)
             {
@@ -53,6 +65,7 @@ namespace AA.Dapper
                     dbMgr = DBConnectionManager.Instance;
                     dbMgr.AddConnectionProvider(dataSourceName, dbp);
                     this.DataSource = dataSourceName;
+                    ForCallContext.SetData(contextName, this);
                 }
                 catch (Exception exception)
                 {
@@ -73,7 +86,7 @@ namespace AA.Dapper
         {
             get
             {
-                return new DataBase(this);
+                return new DataBase();
             }
         }
         /// <summary>

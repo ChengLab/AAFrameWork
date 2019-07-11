@@ -10,8 +10,9 @@ namespace AA.Dapper.Test
     {
         public UserInfoMap()
         {
-           ToTable("Sys_UserInfo");
-            Map(p => p.SysNo).IsKey();
+            ToTable("Sys_UserInfo");//映射具体的表名
+            Map(p => p.SysNo).IsKey().IsIdentity();//指定主键 ,IsIdentity是否自增
+            Map(p=>p.LastLoginDate).Ignore();
         }
     }
 }

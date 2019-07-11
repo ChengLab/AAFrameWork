@@ -7,17 +7,15 @@ using System.Text;
 
 namespace AA.FrameWork.Tests.Unit.dapper.Init
 {
-   public class DbEntityMap
+    public class DbEntityMap
     {
-        public static void Map()
+        public static void InitMapCfgs()
         {
-            Action<FluentMapConfiguration> mps = x =>
-        {
-            x.AddMap(new UserInfoMap());
-
-        };
             var fluentMapconfig = new List<Action<FluentMapConfiguration>>();
-            fluentMapconfig.Add(mps);
+            fluentMapconfig.Add(cfg =>
+            {
+                cfg.AddMap(new UserInfoMap());
+            });
             MapConfiguration.Init(fluentMapconfig);
         }
     }

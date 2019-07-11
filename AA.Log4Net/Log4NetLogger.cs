@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using AA.FrameWork.Logging;
 using log4net;
@@ -27,6 +28,20 @@ namespace AA.Log4Net
         public static void Use()
         {
             Logger.UseLogger(new Log4NetLogger());
+        }
+
+        public static void Use(string file)
+        {
+            Logger.UseLogger(new Log4NetLogger());
+#if NETCORE
+            file = Path.Combine(AppContext.BaseDirectory, file);
+            var logRepository = LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
+            XmlConfigurator.Configure(logRepository, new FileInfo(file));
+
+#else
+            file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
+            XmlConfigurator.Configure(new FileInfo(file));
+#endif
         }
     }
 }

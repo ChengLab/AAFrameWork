@@ -9,45 +9,42 @@ namespace AA.Dapper.Util
 {
     public class DataBase
     {
-        private readonly IDapperContext _dapperContext;
-        public DataBase(IDapperContext dapperContext)
-        {
-            _dapperContext = dapperContext;
-        }
+        private IDbConnection Connection => DapperContext.Current.Connection;
+
         public int Execute(string sql, object param = null, IDbTransaction transaction = null)
         {
-            return _dapperContext.Connection.Execute(sql, param, transaction);
+            return Connection.Execute(sql, param, transaction);
         }
 
         public Task<int> ExecuteAsync(string sql, object param = null, IDbTransaction transaction = null)
         {
-            return _dapperContext.Connection.ExecuteAsync(sql, param, transaction);
+            return Connection.ExecuteAsync(sql, param, transaction);
         }
 
         public T ExecuteScalar<T>(string sql, object param = null, IDbTransaction transaction = null)
         {
-            return _dapperContext.Connection.ExecuteScalar<T>(sql, param, transaction);
+            return Connection.ExecuteScalar<T>(sql, param, transaction);
         }
 
         public Task<T> ExecuteScalarAsync<T>(string sql, object param = null, IDbTransaction transaction = null)
         {
-            return _dapperContext.Connection.ExecuteScalarAsync<T>(sql, param, transaction);
+            return Connection.ExecuteScalarAsync<T>(sql, param, transaction);
         }
 
         public IEnumerable<T> Query<T>(string sql, object param = null, IDbTransaction transaction = null)
         {
-            return _dapperContext.Connection.Query<T>(sql, param, transaction);
+            return Connection.Query<T>(sql, param, transaction);
         }
 
         public Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null, IDbTransaction transaction = null)
         {
-            return _dapperContext.Connection.QueryAsync<T>(sql, param, transaction);
+            return Connection.QueryAsync<T>(sql, param, transaction);
         }
 
         public virtual IPage<T> GetPage<T>(PageRequest pageRequest) where T:class
         {
-            int recordCount = _dapperContext.Connection.ExecuteScalar<int>(PageUtil.CreateCountingSql(pageRequest.SqlText), pageRequest.SqlParam);
-            var list = _dapperContext.Connection.Query<T>(PageUtil.CreatePagingSql(recordCount, pageRequest.PageSize, pageRequest.PageIndex, pageRequest.SqlText, pageRequest.OrderFiled), pageRequest.SqlParam);
+            int recordCount = Connection.ExecuteScalar<int>(PageUtil.CreateCountingSql(pageRequest.SqlText), pageRequest.SqlParam);
+            var list = Connection.Query<T>(PageUtil.CreatePagingSql(recordCount, pageRequest.PageSize, pageRequest.PageIndex, pageRequest.SqlText, pageRequest.OrderFiled), pageRequest.SqlParam);
             IPage<T> result = new Page<T>();
             result.Count = recordCount;
             result.Data = list;

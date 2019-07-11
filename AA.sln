@@ -27,6 +27,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.RabbitMQ", "AA.RabbitMQ\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.FrameWork.Tests.Unit", "AA.FrameWork.Tests.Unit\AA.FrameWork.Tests.Unit.csproj", "{9F73E237-5483-486F-A03A-111F6F7A0282}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.AspNetCore", "AA.AspNetCore\AA.AspNetCore.csproj", "{30B8CCC9-3F8E-4E7D-9832-B4C26559B5FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bus", "Bus", "{1A7C5724-94D0-4D29-9A20-C22DC3FE42A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +65,10 @@ Global
 		{9F73E237-5483-486F-A03A-111F6F7A0282}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F73E237-5483-486F-A03A-111F6F7A0282}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F73E237-5483-486F-A03A-111F6F7A0282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B8CCC9-3F8E-4E7D-9832-B4C26559B5FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B8CCC9-3F8E-4E7D-9832-B4C26559B5FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B8CCC9-3F8E-4E7D-9832-B4C26559B5FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B8CCC9-3F8E-4E7D-9832-B4C26559B5FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

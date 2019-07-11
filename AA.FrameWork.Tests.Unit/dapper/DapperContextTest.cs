@@ -15,18 +15,19 @@ namespace AA.FrameWork.Tests.Unit.dapper
         [Fact]
         public void TextDapperContext()
         {
-            DbEntityMap.Map();
+            DbEntityMap.InitMapCfgs();
             IDapperContext dapperContext = new DapperContext(new NameValueCollection()
             {
                 ["aa.dataSource.AaCenter.connectionString"] = "Data Source =.; Initial Catalog = AaCenter;User ID = sa; Password = 123;",
                 ["aa.dataSource.AaCenter.provider"] = "SqlServer"
             });
-            IUserInfoRepository _userInforepository = new UserInfoRepository(dapperContext);
-
-            var users = _userInforepository.GetAll();
-
+            IUserInfoRepository _userInforepository = new UserInfoRepository();
+            var users = _userInforepository.QueryAll();
         }
 
 
     }
+
+   
+
 }

@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
+    <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.1.1" />
+    <PackageReference Include="System.IO.FileSystem.AccessControl" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AA.FrameWork">
+      <HintPath>..\AA.FrameWork\bin\Debug\netstandard2.0\AA.FrameWork.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

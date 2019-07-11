@@ -8,6 +8,6 @@ namespace AADemo.Domain.Repository
 {
    public interface IUserInfoRepository: IDapperRepository<UserInfo>
     {
- 
+        IEnumerable<UserInfo> QueryAll();
     }
 }

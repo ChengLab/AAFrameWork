@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using AA.Dapper.FluentMap;
+using AA.Dapper.FluentMap.Dommel.Mapping;
+using AA.Dapper.FluentMap.Dommel.Resolvers;
+using AA.Dapper.FluentMap.Mapping;
+using AA.FrameWork.Domain;
 using Dommel;
 namespace AA.Dapper.Repositories
 {
     public class DapperRepository<TEntity> : IDapperRepository<TEntity>
          where TEntity : class
     {
-
-        private readonly IDapperContext dapperContext;
-        public DapperRepository(IDapperContext context)
-        {
-            this.dapperContext = context;
-        }
-        public IDbConnection Connection => dapperContext.Connection;
+        public IDbConnection Connection => DapperContext.Current.Connection;
         #region Insert
         /// <summary>
         /// Insert entity
@@ -74,7 +73,7 @@ namespace AA.Dapper.Repositories
 
         public virtual Task<bool> UpdateAsync(TEntity entity, IDbTransaction transaction = null)
         {
-            return  Connection.UpdateAsync(entity, transaction);
+            return Connection.UpdateAsync(entity, transaction);
         }
         #endregion
 
@@ -147,6 +146,6 @@ namespace AA.Dapper.Repositories
         }
         #endregion
 
-     
+
     }
 }

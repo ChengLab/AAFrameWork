@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using AA.FrameWork.Domain;
 namespace AA.Dapper.Test
 {
    public class UserInfo
@@ -9,7 +9,7 @@ namespace AA.Dapper.Test
         /// <summary>
         /// SysNo
         /// </summary>
-        public Guid SysNo
+        public long SysNo
         {
             get;
             set;
@@ -124,7 +124,5 @@ namespace AA.Dapper.Test
         }
 
         public DateTime GmtModified { get; set; }
-
-        public string Roles { get; set; }
     }
 }

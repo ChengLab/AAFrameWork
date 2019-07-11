@@ -11,7 +11,7 @@
     <RepositoryUrl>https://github.com/ChengLab/AAFrameWork</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description>AA框架 Log4Net logger support</Description>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
 
