@@ -107,12 +107,7 @@ IDapperRepository<UserInfo> userInfoRepository = new DapperRepository<UserInfo>(
 ```
 public class UserInfoRepository : DapperRepository<UserInfo>, IUserInfoRepository
     {
-        private readonly IDapperContext _dapperContext;
-        public UserInfoRepository(IDapperContext context)
-        {
-            _dapperContext = context;
-        }
-
+      
         public IEnumerable<UserInfo> QueryAll()
         {
             var result = DapperContext.Current.DataBase.Query<UserInfo>("SELECT * from  [Sys_UserInfo]");//实例
