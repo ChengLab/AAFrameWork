@@ -18,6 +18,9 @@ namespace AA.FrameWork.Tests.Unit.dapper
         {
             DbEntityMap.InitMapCfgs();
         }
+        /// <summary>
+        /// Insert
+        /// </summary>
         [Fact]
         public void TextInsert()
         {
@@ -30,6 +33,9 @@ namespace AA.FrameWork.Tests.Unit.dapper
             };
             var result = userInfoRepository.Insert(user);
         }
+        /// <summary>
+        /// Update
+        /// </summary>
         [Fact]
         public void TextUpdate()
         {
@@ -37,30 +43,40 @@ namespace AA.FrameWork.Tests.Unit.dapper
             user.GmtModified = DateTime.Now;
             var result = userInfoRepository.Update(user);
         }
+        /// <summary>
+        /// Remove
+        /// </summary>
         [Fact]
         public void TextRemove()
         {
             var user = userInfoRepository.Get(1);
             var result = userInfoRepository.Delete(user);
         }
+        /// <summary>
+        /// Get
+        /// </summary>
         [Fact]
         public void TextGet()
         {
             var user = userInfoRepository.Get(1);
             var users = userInfoRepository.GetAll();
         }
+        /// <summary>
+        /// Select
+        /// </summary>
         [Fact]
         public void TextSelect()
         {
             var users = userInfoRepository.Select(p => p.UserName == "chengTian");
         }
-       
+        /// <summary>
+        /// Transaction
+        /// </summary>
         [Fact]
         public void TestTran()
         {
             dapperContext.BeginTransaction();
             dapperContext.Commit();
-
         }
 
     }

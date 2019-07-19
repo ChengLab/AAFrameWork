@@ -11,7 +11,7 @@ namespace AA.Dapper
         IDbConnection Connection { get; }
         IDbConnection GetCurrentConnection();
         IDbTransaction GetCurrentTransaction();
-        void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.RepeatableRead);
+        IDbTransaction BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.RepeatableRead);
         void Commit();
         void RollBack();
          DataBase DataBase { get; }

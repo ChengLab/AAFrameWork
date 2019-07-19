@@ -5,12 +5,15 @@
     <Authors>ChengTian</Authors>
     <Company>AA</Company>
     <Product>AA</Product>
-    <Description>AA框架 AA.Dapper orm</Description>
+    <Description>AA.Dapper 基于dapper+dommel 开发 ， 支持工作单元、仓储模式和原生dapper的操作</Description>
     <PackageProjectUrl>https://github.com/ChengLab/AAFrameWork</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ChengLab/AAFrameWork</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>AA;Dapper；dommel；</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>1.0.1.0</AssemblyVersion>
+    <FileVersion>1.0.1.0</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

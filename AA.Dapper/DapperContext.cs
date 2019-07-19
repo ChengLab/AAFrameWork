@@ -121,14 +121,14 @@ namespace AA.Dapper
             return dbTransaction;
         }
 
-        public void BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
+        public IDbTransaction BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
             if (Connection.State != ConnectionState.Open)
             {
                 Connection.Open();
             }
             dbTransaction = Connection.BeginTransaction(isolationLevel);
-
+            return dbTransaction;
         }
 
         public void Commit()

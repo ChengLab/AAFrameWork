@@ -14,9 +14,9 @@ namespace AA.Dapper.Repositories
         /// Insert entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        object Insert(TEntity entity, IDbTransaction transaction = null);
+        object Insert(TEntity entity);
 
-        Task<object> InsertAsync(TEntity entity, IDbTransaction transaction = null);
+        Task<object> InsertAsync(TEntity entity);
         #endregion
 
         #region Delete
@@ -24,10 +24,10 @@ namespace AA.Dapper.Repositories
         /// Delete entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        bool Delete(TEntity entity, IDbTransaction transaction = null);
+        bool Delete(TEntity entity);
 
 
-        Task<bool> DeleteAsync(TEntity entity, IDbTransaction transaction = null);
+        Task<bool> DeleteAsync(TEntity entity);
 
 
 
@@ -38,9 +38,9 @@ namespace AA.Dapper.Repositories
         /// <param name="predicate"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        bool DeleteMultiple(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null);
+        bool DeleteMultiple(Expression<Func<TEntity, bool>> predicate);
 
-        Task<bool> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null);
+        Task<bool> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate);
 
         #endregion
         #region Update
@@ -51,9 +51,9 @@ namespace AA.Dapper.Repositories
         /// <param name="entity"></param>
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
-        bool Update(TEntity entity, IDbTransaction transaction = null);
+        bool Update(TEntity entity);
 
-        Task<bool> UpdateAsync(TEntity entity, IDbTransaction transaction = null);
+        Task<bool> UpdateAsync(TEntity entity);
         #endregion
         #region Get
         //T Query();
@@ -86,8 +86,8 @@ namespace AA.Dapper.Repositories
         /// <param name="predicate"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        IEnumerable<TEntity> Select(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null);
-        Task<IEnumerable<TEntity>> SelectAsync(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null);
+        IEnumerable<TEntity> Select(Expression<Func<TEntity, bool>> predicate);
+        Task<IEnumerable<TEntity>> SelectAsync(Expression<Func<TEntity, bool>> predicate);
 
         /// <summary>
         /// Selects the first entity matching the specified predicate, or a default value if no entity matched.

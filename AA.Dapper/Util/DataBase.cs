@@ -10,33 +10,33 @@ namespace AA.Dapper.Util
     public class DataBase
     {
         private IDbConnection Connection => DapperContext.Current.Connection;
-
-        public int Execute(string sql, object param = null, IDbTransaction transaction = null)
+        private IDbTransaction transaction => DapperContext.Current.dbTransaction;
+        public int Execute(string sql, object param = null)
         {
             return Connection.Execute(sql, param, transaction);
         }
 
-        public Task<int> ExecuteAsync(string sql, object param = null, IDbTransaction transaction = null)
+        public Task<int> ExecuteAsync(string sql, object param = null)
         {
             return Connection.ExecuteAsync(sql, param, transaction);
         }
 
-        public T ExecuteScalar<T>(string sql, object param = null, IDbTransaction transaction = null)
+        public T ExecuteScalar<T>(string sql, object param = null)
         {
             return Connection.ExecuteScalar<T>(sql, param, transaction);
         }
 
-        public Task<T> ExecuteScalarAsync<T>(string sql, object param = null, IDbTransaction transaction = null)
+        public Task<T> ExecuteScalarAsync<T>(string sql, object param = null)
         {
             return Connection.ExecuteScalarAsync<T>(sql, param, transaction);
         }
 
-        public IEnumerable<T> Query<T>(string sql, object param = null, IDbTransaction transaction = null)
+        public IEnumerable<T> Query<T>(string sql, object param = null)
         {
             return Connection.Query<T>(sql, param, transaction);
         }
 
-        public Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null, IDbTransaction transaction = null)
+        public Task<IEnumerable<T>> QueryAsync<T>(string sql, object param = null)
         {
             return Connection.QueryAsync<T>(sql, param, transaction);
         }

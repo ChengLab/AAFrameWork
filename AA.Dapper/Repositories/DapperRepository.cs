@@ -15,17 +15,18 @@ namespace AA.Dapper.Repositories
          where TEntity : class
     {
         public IDbConnection Connection => DapperContext.Current.Connection;
+        private IDbTransaction transaction => DapperContext.Current.dbTransaction;
         #region Insert
         /// <summary>
         /// Insert entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public virtual object Insert(TEntity entity, IDbTransaction transaction = null)
+        public virtual object Insert(TEntity entity)
         {
             return Connection.Insert(entity, transaction);
         }
 
-        public virtual Task<object> InsertAsync(TEntity entity, IDbTransaction transaction = null)
+        public virtual Task<object> InsertAsync(TEntity entity)
         {
             return Connection.InsertAsync(entity, transaction);
         }
@@ -36,23 +37,23 @@ namespace AA.Dapper.Repositories
         /// Delete entity
         /// </summary>
         /// <param name="entity">Entity</param>
-        public virtual bool Delete(TEntity entity, IDbTransaction transaction = null)
+        public virtual bool Delete(TEntity entity)
         {
             return Connection.Delete(entity, transaction);
         }
 
-        public virtual Task<bool> DeleteAsync(TEntity entity, IDbTransaction transaction = null)
+        public virtual Task<bool> DeleteAsync(TEntity entity)
         {
             return Connection.DeleteAsync(entity, transaction);
         }
 
 
-        public virtual bool DeleteMultiple(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
+        public virtual bool DeleteMultiple(Expression<Func<TEntity, bool>> predicate)
         {
             return Connection.DeleteMultiple(predicate, transaction);
         }
 
-        public virtual Task<bool> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
+        public virtual Task<bool> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return Connection.DeleteMultipleAsync(predicate, transaction);
         }
@@ -66,12 +67,12 @@ namespace AA.Dapper.Repositories
         /// <param name="entity"></param>
         /// <param name="transaction"></param>
         /// <param name="commandTimeout"></param>
-        public virtual bool Update(TEntity entity, IDbTransaction transaction = null)
+        public virtual bool Update(TEntity entity)
         {
             return Connection.Update(entity, transaction);
         }
 
-        public virtual Task<bool> UpdateAsync(TEntity entity, IDbTransaction transaction = null)
+        public virtual Task<bool> UpdateAsync(TEntity entity)
         {
             return Connection.UpdateAsync(entity, transaction);
         }
@@ -120,12 +121,12 @@ namespace AA.Dapper.Repositories
         /// <param name="predicate"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        public virtual IEnumerable<TEntity> Select(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
+        public virtual IEnumerable<TEntity> Select(Expression<Func<TEntity, bool>> predicate)
         {
             return Connection.Select(predicate);
         }
 
-        public virtual Task<IEnumerable<TEntity>> SelectAsync(Expression<Func<TEntity, bool>> predicate, IDbTransaction transaction = null)
+        public virtual Task<IEnumerable<TEntity>> SelectAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return Connection.SelectAsync(predicate);
         }

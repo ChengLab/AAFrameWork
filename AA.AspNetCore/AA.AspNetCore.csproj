@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Description>AspNetCore 常用的</Description>
+    <PackageProjectUrl>https://github.com/ChengLab/AAFrameWork</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ChengLab/AAFrameWork</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>netcore</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
