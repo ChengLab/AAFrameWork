@@ -122,5 +122,80 @@ public class UserInfoRepository : DapperRepository<UserInfo>, IUserInfoRepositor
 1. ILog log= Logger.Get(typeof(类));
 log.Debug("example");
 
+## AA.ServiceBus 用法
+###### 生产者（事件和命令两种类型）
+ 实例化bus
+```
+ //事件
+ IBusControl busControl = ServiceBusManager.Instance.UseRabbitMq(rabbitMqUri, rabbitMqUserName, rabbitMqPassword)
+                         .BuildEventProducer();
+ //命令
+ ISendEndpoint busControl = ServiceBusManager.Instance.UseRabbitMq(rabbitMqUri, rabbitMqUserName, rabbitMqPassword)
+                         .BuildCommandProducer(queueName);
+```
+ 
+实例化bus之后可以使用发送和发布两个方法
 
+```
+  //命令
+  TaskUtil.Await(busControl.Send<SubmitOrder>(new
+            {
+                Id = 10
+            }));
+   //事件          
+   TaskUtil.Await(busControl.Publish<OrderSubmitted>(new
+            {
+                Id = 1
+            }));
+```
+###### 消费者
+
+```
+  [Fact]
+        public void TestConsumer()
+        {
+            Log4NetLogger.Use("Log4Net/log4net.config");
+            string rabbitMqUri = "rabbitmq://localhost:5672";
+            string rabbitMqUserName = "";
+            string rabbitMqPassword = "";
+            string queueName = "order.queue";
+
+            var busControl = ServiceBusManager.Instance.UseRabbitMq(rabbitMqUri, rabbitMqUserName, rabbitMqPassword)
+             .RegisterConsumer<SubmitOrderCommandConsumer>(queueName)//注册命令消费者
+             .RegisterConsumer<OrderSubmittedEventConsumer>(null)//注册事件消费者
+             .Build();
+            busControl.Start();
+
+        }
+```
+定义消费者需要实现接口IConsumer
+
+```
+public class OrderSubmittedEventConsumer : IConsumer<OrderSubmitted>
+    {
+        public async Task Consume(ConsumeContext<OrderSubmitted> context)
+        {
+            var @event = context.Message;
+
+            var result = $"OrderSubmittedEvent {@event.Id.ToString()}";
+            ILog log = Logger.Get(typeof(OrderSubmittedEventConsumer));
+            log.Debug(result);
+            //do somethings...
+        }
+    }
+
+
+    public class SubmitOrderCommandConsumer : IConsumer<SubmitOrder>
+    {
+        public async Task Consume(ConsumeContext<SubmitOrder> context)
+        {
+            var command = context.Message;
+
+            var result = $"CreateFooCommand {command.Id.ToString()}";
+            ILog log = Logger.Get(typeof(SubmitOrderCommandConsumer));
+            log.Debug(result);
+            //do somethings...
+        }
+    }
+```
 
