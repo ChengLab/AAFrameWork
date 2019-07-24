@@ -24,6 +24,7 @@ namespace AA.FrameWork.Tests.Unit.dapper
         [Fact]
         public void TextInsert()
         {
+          
             var user = new UserInfo()
             {
                 UserName = "chengTian",

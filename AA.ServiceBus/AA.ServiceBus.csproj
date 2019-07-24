@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>基于MassTransit  的服务总线 ；很方便的应用在event bus 和 publish/subscribe 系统</Description>
+    <RepositoryUrl>git</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/ChengLab/AAFrameWork</PackageProjectUrl>
+    <RepositoryType>https://github.com/ChengLab/AAFrameWork</RepositoryType>
+    <PackageTags>MassTransit;RabbitMQ;EventBus;publish;subscribe</PackageTags>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+    <DefineConstants>$(DefineConstants);NETCORE</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MassTransit" Version="5.5.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="5.5.2" />
+  </ItemGroup>
+
+</Project>

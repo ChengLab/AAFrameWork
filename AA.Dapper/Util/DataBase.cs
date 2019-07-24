@@ -41,7 +41,7 @@ namespace AA.Dapper.Util
             return Connection.QueryAsync<T>(sql, param, transaction);
         }
 
-        public virtual IPage<T> GetPage<T>(PageRequest pageRequest) where T:class
+        public virtual IPage<T> GetPage<T>(PageRequest pageRequest) where T : class
         {
             int recordCount = Connection.ExecuteScalar<int>(PageUtil.CreateCountingSql(pageRequest.SqlText), pageRequest.SqlParam);
             var list = Connection.Query<T>(PageUtil.CreatePagingSql(recordCount, pageRequest.PageSize, pageRequest.PageIndex, pageRequest.SqlText, pageRequest.OrderFiled), pageRequest.SqlParam);
