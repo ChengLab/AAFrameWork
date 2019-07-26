@@ -5,9 +5,9 @@ AA.Framework is built on the popular open source class library of NET Core
 - [ ] log：Log4net
 - [ ] object mapper：automapper
 - [ ] orm：dapper（Dapper-FluentMap,Dommel）
-- [x] MQ：RabbitMQ.Client
+- [ ] MQ：RabbitMQ.Client
 - [ ] Redis：StackExchange.Redis
-- [x] message bus：MassTransit
+- [ ] message bus：MassTransit
 - [x] more.....
 ## Nuget Packages
 
