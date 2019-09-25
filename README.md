@@ -16,7 +16,7 @@ Package| nuget | description
 AA.Dapper | [nuget](https://www.nuget.org/packages/AA.Dapper/) | 基于dapper，Dapper-FluentMap 开发 ， 支持工作单元、仓储模式和原生dapper的操作
 AA.Log4Net | [nuget](https://www.nuget.org/packages/AA.Log4Net/) | 基于Log4net开发，提供常用的日志操作类
 AA.FrameWork  | [nuget](https://www.nuget.org/packages/AA.FrameWork/) | 基础框架
-AA.Redis  | [nuget](https://www.nuget.org/packages/AA.Redis/) | 基于StackExchange.Redis开发，提供各种redis操作
+AA.Redis  | [nuget](https://www.nuget.org/packages/AA.Redis/) | 基于StackExchange.Redis开发，提供各种redis操作和基于redis的分布式锁
 AA.AutoMapper  | [nuget](https://www.nuget.org/packages/AA.AutoMapper/) | 基于AutoMapper开发，对象映射
 AA.ServiceBus  | [nuget](https://www.nuget.org/packages/AA.ServiceBus/) | 基于MassTransit开发的服务总线 ；很方便的应用在event bus 和 publish/subscribe 场景
 AA.AspNetCore  | [nuget](https://www.nuget.org/packages/AA.AspNetCore/) | aspnetcore常用类集合
