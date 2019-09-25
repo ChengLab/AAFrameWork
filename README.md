@@ -1,7 +1,7 @@
 # AA.FrameWork
 AA.Framework is built on the popular open source class library of NET Core
 
-## 开源清单
+## Completed list
 - [ ] log：Log4net
 - [ ] object mapper：automapper
 - [ ] orm：dapper（Dapper-FluentMap,Dommel）
@@ -11,13 +11,15 @@ AA.Framework is built on the popular open source class library of NET Core
 - [x] more.....
 ## Nuget Packages
 
-Package| nuget
----|---
-AA.Dapper | [nuget](https://www.nuget.org/packages/AA.Dapper/)
-AA.Log4Net | [nuget](https://www.nuget.org/packages/AA.Log4Net/)
-AA.FrameWork  | [nuget](https://www.nuget.org/packages/AA.FrameWork/)
-AA.Redis  | [nuget](https://www.nuget.org/packages/AA.Redis/)
-AA.AutoMapper  | [nuget](https://www.nuget.org/packages/AA.AutoMapper/)
+Package| nuget | description
+---|--- |---
+AA.Dapper | [nuget](https://www.nuget.org/packages/AA.Dapper/) | 基于dapper，Dapper-FluentMap 开发 ， 支持工作单元、仓储模式和原生dapper的操作
+AA.Log4Net | [nuget](https://www.nuget.org/packages/AA.Log4Net/) | 基于Log4net开发，提供常用的日志操作类
+AA.FrameWork  | [nuget](https://www.nuget.org/packages/AA.FrameWork/) | 基础框架
+AA.Redis  | [nuget](https://www.nuget.org/packages/AA.Redis/) | 基于StackExchange.Redis开发，提供各种redis操作
+AA.AutoMapper  | [nuget](https://www.nuget.org/packages/AA.AutoMapper/) | 基于AutoMapper开发，对象映射
+AA.ServiceBus  | [nuget](https://www.nuget.org/packages/AA.ServiceBus/) | 基于MassTransit开发的服务总线 ；很方便的应用在event bus 和 publish/subscribe 场景
+AA.AspNetCore  | [nuget](https://www.nuget.org/packages/AA.AspNetCore/) | aspnetcore常用类集合
 
 ## AA.Dapper用法
 #### 实体映射配置
