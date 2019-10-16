@@ -1,9 +1,25 @@
-﻿using System;
+﻿using AA.FrameWork.ObjectMapping;
+using System;
 
 namespace AA.FrameWork.Extensions
 {
     public static class ObjectExtension
     {
+        /// <summary>
+        /// map an object to an other object
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static TDestination MapTo<TDestination>(this object source)
+        {
+            return ObjectMapManager.ObjectMapper.Map<TDestination>(source);
+        }
+
+        public static TDestination MapTo<TSource, TDestination>(this TSource source)
+        {
+            return ObjectMapManager.ObjectMapper.Map<TSource, TDestination>(source);
+        }
 
         /// <summary>
         ///     转换为short，默认值：short.MinValue

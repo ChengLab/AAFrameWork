@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.1.0" />
     <PackageReference Include="MassTransit.RabbitMQ" Version="5.5.2" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
     <PackageReference Include="xunit" Version="2.3.1" />
@@ -14,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AA.AutoMapper\AA.AutoMapper.csproj" />
     <ProjectReference Include="..\AA.Dapper\AA.Dapper.csproj" />
     <ProjectReference Include="..\AA.FrameWork\AA.FrameWork.csproj" />
     <ProjectReference Include="..\AA.Log4Net\AA.Log4Net.csproj" />
