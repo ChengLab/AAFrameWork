@@ -19,6 +19,7 @@
     <ProjectReference Include="..\AA.Dapper\AA.Dapper.csproj" />
     <ProjectReference Include="..\AA.FrameWork\AA.FrameWork.csproj" />
     <ProjectReference Include="..\AA.Log4Net\AA.Log4Net.csproj" />
+    <ProjectReference Include="..\AA.NLog\AA.NLog.csproj" />
     <ProjectReference Include="..\AA.RabbitMQ\AA.RabbitMQ.csproj" />
     <ProjectReference Include="..\AA.Redis\AA.Redis.csproj" />
     <ProjectReference Include="..\AA.ServiceBus\AA.ServiceBus.csproj" />
@@ -30,6 +31,9 @@
 
   <ItemGroup>
     <None Update="Log4Net\log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="NLog\nlog.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
