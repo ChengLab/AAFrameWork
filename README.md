@@ -200,4 +200,42 @@ public class OrderSubmittedEventConsumer : IConsumer<OrderSubmitted>
         }
     }
 ```
+## AA.AutoMapper用法
+##### 实现IMapperConfiguration接口，创建映射规则配置
 
+```
+ public class WebMapperConfigurations : IMapperConfiguration
+    {
+        public int Order { get { return 0; } }
+
+        public Action<IMapperConfigurationExpression>  GetConfiguration()
+        {
+            Action<IMapperConfigurationExpression> action = cfg =>
+            {
+                cfg.CreateMap<UserVm, UserInput>();
+            };
+            return action;
+        }
+    }
+```
+#####  在程序startup调用配置
+
+```
+     var mapperConfig = new WebMapperConfigurations();
+     AutoMapperConfiguration.Init(new List<Action<IMapperConfigurationExpression>> { mapperConfig.GetConfiguration() });
+     ObjectMapping.ObjectMapManager.ObjectMapper = new AutoMapperObjectMapper();
+```
+#####  利用扩展方法MapTo执行映射
+
+```
+ [Fact]
+        public void TestMap()
+        {
+            //init
+            Init();
+            UserVm userVm = new UserVm { Id = 1, Name = "成天" ,Remark="微信公众号:dotNet知音"};
+            var userDto = userVm.MapTo<UserInput>();
+            //var userDto2 = userVm.MapTo<UserVm,UserInput>();
+
+        }
+```
