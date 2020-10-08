@@ -1,11 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net452;netstandard2.1</TargetFrameworks>
+    <Description>支持 NLog</Description>
+    <PackageProjectUrl>https://github.com/ChengLab/AAFrameWork</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>NLog</PackageTags>
+    <RepositoryUrl>https://github.com/ChengLab/AAFrameWork</RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>2.0.1</Version>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
   </PropertyGroup>
 
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
     <DefineConstants>$(DefineConstants);NETCORE</DefineConstants>
   </PropertyGroup>
   

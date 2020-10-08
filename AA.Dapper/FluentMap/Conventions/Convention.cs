@@ -11,7 +11,7 @@ namespace AA.Dapper.FluentMap.Conventions
     public abstract class Convention
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:AA.Dapper.FluentMap.Conventions.Convention"/> class.
+        /// Initializes a new instance of the <see cref="T:Dapper.FluentMap.Conventions.Convention"/> class.
         /// </summary>
         protected Convention()
         {
@@ -19,9 +19,15 @@ namespace AA.Dapper.FluentMap.Conventions
             PropertyMaps = new List<PropertyMap>();
         }
 
-        internal IList<PropertyConventionConfiguration> ConventionConfigurations { get; }
+        /// <summary>
+        /// Gets the convention configurations for the properties.
+        /// </summary>
+        public IList<PropertyConventionConfiguration> ConventionConfigurations { get; }
 
-        internal IList<PropertyMap> PropertyMaps { get; }
+        /// <summary>
+        /// Gets the property mappings.
+        /// </summary>
+        public IList<PropertyMap> PropertyMaps { get; }
 
         /// <summary>
         /// Configures a convention that applies on all properties of the entity.

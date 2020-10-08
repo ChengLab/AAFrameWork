@@ -25,7 +25,7 @@ namespace AA.Dapper.FluentMap.Dommel.Mapping
         /// Gets the <see cref="IPropertyMap"/> implementation for the current entity map.
         /// </summary>
         /// <param name="info">The information about the property.</param>
-        /// <returns>An implementation of <see cref="AA.Dapper.FluentMap.Mapping.IPropertyMap"/>.</returns>
+        /// <returns>An implementation of <see cref="Dapper.FluentMap.Mapping.IPropertyMap"/>.</returns>
         protected override DommelPropertyMap GetPropertyMap(PropertyInfo info)
         {
             return new DommelPropertyMap(info);

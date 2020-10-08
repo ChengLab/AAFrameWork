@@ -10,34 +10,48 @@ namespace AA.AspNetCore.Results
     {
         public T Data { get; set; }
 
-        public static Result<T> Response(bool isSuccess, T data, string msg = "success")
+        public static Result<T> Response(bool isSuccess, T data, string code = "", string msg = "")
         {
             return new Result<T>
             {
                 IsSuccess = isSuccess,
                 Message = msg,
-                Data = data 
+                Code = code,
+                Data = data
             };
         }
     }
     public class Result
     {
+
         public bool IsSuccess { get; set; }
         public string Message { get; set; }
+        public string Code { get; set; }
         public Result() { }
-        public Result(bool isSuccess, string msg)
+        public Result(bool isSuccess, string code, string msg)
         {
             this.IsSuccess = isSuccess;
             this.Message = msg;
+            this.Code = code;
         }
-        public static Result Success(string msg = "success")
+        public static Result ResponseSuccess(string msg = "", string code = "")
         {
-            return new Result(true, msg);
+            return new Result(true, code, msg);
         }
 
-        public static Result Error(string message)
+        public static Result ResponseError(string msg = "", string code = "")
         {
-            return new Result(false, message);
+            return new Result(false, code, msg);
+        }
+        public static Result<T> Response<T>(bool isSuccess, T data, string code = "", string msg = "")
+        {
+            return new Result<T>
+            {
+                IsSuccess = isSuccess,
+                Message = msg,
+                Code = code,
+                Data = data
+            };
         }
     }
 }

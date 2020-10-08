@@ -27,7 +27,7 @@ namespace AA.Dapper.FluentMap.Conventions
         /// Filters the properties that this convention applies to based on a predicate.
         /// </summary>
         /// <param name="predicate">A function to test each property for a condition.</param>
-        /// <returns>The same instance of <see cref="T:AA.Dapper.FluentMap.Conventions.PropertyConventionConfiguration"/>.</returns>
+        /// <returns>The same instance of <see cref="T:Dapper.FluentMap.Conventions.PropertyConventionConfiguration"/>.</returns>
         public PropertyConventionConfiguration Where(Func<PropertyInfo, bool> predicate)
         {
             PropertyPredicates.Add(predicate);
@@ -39,7 +39,7 @@ namespace AA.Dapper.FluentMap.Conventions
         /// </summary>
         /// <param name="configure">
         /// An action that performs configuration against
-        /// <see cref="T:AA.Dapper.FluentMap.Conventions.ConventionPropertyConfiguration"/>.
+        /// <see cref="T:Dapper.FluentMap.Conventions.ConventionPropertyConfiguration"/>.
         /// </param>
         public void Configure(Action<ConventionPropertyConfiguration> configure)
         {

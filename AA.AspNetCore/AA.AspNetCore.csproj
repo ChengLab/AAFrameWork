@@ -1,13 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Description>AspNetCore 常用的</Description>
     <PackageProjectUrl>https://github.com/ChengLab/AAFrameWork</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ChengLab/AAFrameWork</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>netcore</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>2.0.1</Version>
+    <AssemblyVersion>2.0.1.0</AssemblyVersion>
+    <FileVersion>2.0.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +18,10 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
     <PackageReference Include="Microsoft.Extensions.FileProviders.Physical" Version="2.1.1" />
     <PackageReference Include="System.IO.FileSystem.AccessControl" Version="4.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AA.FrameWork\AA.FrameWork.csproj" />
   </ItemGroup>
 
   <ItemGroup>

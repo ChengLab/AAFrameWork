@@ -8,7 +8,7 @@ using AA.Dapper.FluentMap.Dommel.Mapping;
 using AA.Dapper.FluentMap.Dommel.Resolvers;
 using AA.Dapper.FluentMap.Mapping;
 using AA.FrameWork.Domain;
-using Dommel;
+using AA.Dapper.Dommel;
 namespace AA.Dapper.Repositories
 {
     public class DapperRepository<TEntity> : IDapperRepository<TEntity>
@@ -48,12 +48,12 @@ namespace AA.Dapper.Repositories
         }
 
 
-        public virtual bool DeleteMultiple(Expression<Func<TEntity, bool>> predicate)
+        public virtual int DeleteMultiple(Expression<Func<TEntity, bool>> predicate)
         {
             return Connection.DeleteMultiple(predicate, transaction);
         }
 
-        public virtual Task<bool> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate)
+        public virtual Task<int> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return Connection.DeleteMultipleAsync(predicate, transaction);
         }
@@ -147,6 +147,13 @@ namespace AA.Dapper.Repositories
         }
         #endregion
 
+
+        #region from
+        public virtual IEnumerable<TEntity> From(Action<SqlExpression<TEntity>> sqlBuilder)
+        {
+            return Connection.From<TEntity>(sqlBuilder);
+        }
+        #endregion
 
     }
 }

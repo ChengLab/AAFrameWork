@@ -15,6 +15,7 @@ namespace AA.FrameWork.Tests.Unit.dapper.Init
             fluentMapconfig.Add(cfg =>
             {
                 cfg.AddMap(new UserInfoMap());
+                cfg.AddMap(new VillageMap());
             });
             MapConfiguration.Init(fluentMapconfig);
         }

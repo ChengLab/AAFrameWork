@@ -14,7 +14,7 @@ namespace AA.Dapper.FluentMap.TypeMaps
         private readonly IEnumerable<SqlMapper.ITypeMap> _mappers;
 
         /// <summary>
-        /// Initializes an instance of the <see cref="T:AA.Dapper.FluentMap.TypeMaps.MultiTypeMap"/>
+        /// Initializes an instance of the <see cref="T:Dapper.FluentMap.TypeMaps.MultiTypeMap"/>
         /// class with the specified Dapper type mappers.
         /// </summary>
         /// <param name="mappers">The type mapping strategies to be used when mapping.</param>

@@ -29,7 +29,7 @@ namespace AA.Dapper.FluentMap.Configuration
         /// Configures the current covention for the specified entity type.
         /// </summary>
         /// <typeparam name="T">The type of the entity.</typeparam>
-        /// <returns>The current instance of <see cref="T:AA.Dapper.FluentMap.Configuration.FluentConventionConfiguration"/>.</returns>
+        /// <returns>The current instance of <see cref="T:Dapper.FluentMap.Configuration.FluentConventionConfiguration"/>.</returns>
         public FluentConventionConfiguration ForEntity<T>()
         {
             var type = typeof(T);
@@ -48,7 +48,7 @@ namespace AA.Dapper.FluentMap.Configuration
         /// An array of namespaces which filter the types in the current assembly.
         /// This parameter is optional.
         /// </param>
-        /// <returns>The current instance of <see cref="T:AA.Dapper.FluentMap.Configuration.FluentConventionConfiguration"/>.</returns>
+        /// <returns>The current instance of <see cref="T:Dapper.FluentMap.Configuration.FluentConventionConfiguration"/>.</returns>
         public FluentConventionConfiguration ForEntitiesInCurrentAssembly(params string[] namespaces)
         {
             foreach (var type in Assembly.GetCallingAssembly().GetExportedTypes())
@@ -78,7 +78,7 @@ namespace AA.Dapper.FluentMap.Configuration
         /// An array of namespaces which filter the types in <paramref name="assembly"/>.
         /// This parameter is optional.
         /// </param>
-        /// <returns>The current instance of <see cref="T:AA.Dapper.FluentMap.Configuration.FluentConventionConfiguration"/>.</returns>
+        /// <returns>The current instance of <see cref="T:Dapper.FluentMap.Configuration.FluentConventionConfiguration"/>.</returns>
         public FluentConventionConfiguration ForEntitiesInAssembly(Assembly assembly, params string[] namespaces)
         {
             foreach (var type in assembly.GetExportedTypes())

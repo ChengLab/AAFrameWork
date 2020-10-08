@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{AA75FE19-B13C-4440-AA5A-602375FCC23A}"
 EndProject
@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.RabbitMQ", "AA.RabbitMQ\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.ServiceBus", "AA.ServiceBus\AA.ServiceBus.csproj", "{B42A7FA6-9976-447A-9D32-B02A2D5162E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AA.NLog", "AA.NLog\AA.NLog.csproj", "{A500ABFE-FF4C-4D53-B595-FE17683EBCC9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AA.NLog", "AA.NLog\AA.NLog.csproj", "{A500ABFE-FF4C-4D53-B595-FE17683EBCC9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

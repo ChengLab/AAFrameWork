@@ -81,7 +81,7 @@ namespace AA.Dapper.Test
         /// <summary>
         /// QQ
         /// </summary>
-        public string Qq
+        public string QQ
         {
             get;
             set;
@@ -124,5 +124,9 @@ namespace AA.Dapper.Test
         }
 
         public DateTime GmtModified { get; set; }
+
+       public string UserPic { get; set; }
+
+    
     }
 }

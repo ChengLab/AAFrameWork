@@ -7,16 +7,16 @@ using AA.Dapper.FluentMap.Mapping;
 namespace AA.Dapper.FluentMap.Configuration
 {
     /// <summary>
-    /// Defines methods for configuring AA.Dapper.FluentMap.
+    /// Defines methods for configuring Dapper.FluentMap.
     /// </summary>
     public class FluentMapConfiguration
     {
         /// <summary>
-        /// Adds the specified <see cref="T:AA.Dapper.FluentMap.Mapping.EntityMap"/> to the configuration of AA.Dapper.FluentMap.
+        /// Adds the specified <see cref="T:Dapper.FluentMap.Mapping.EntityMap"/> to the configuration of Dapper.FluentMap.
         /// </summary>
         /// <typeparam name="TEntity">The type argument of the entity.</typeparam>
         /// <param name="mapper">
-        /// An instance of the <see cref="T:AA.Dapper.FluentMap.Mapping.IEntityMap"/> interface containing the
+        /// An instance of the <see cref="T:Dapper.FluentMap.Mapping.IEntityMap"/> interface containing the
         /// entity mapping configuration.
         /// </param>
         public void AddMap<TEntity>(IEntityMap<TEntity> mapper) where TEntity : class
@@ -32,11 +32,11 @@ namespace AA.Dapper.FluentMap.Configuration
         }
 
         /// <summary>
-        /// Adds the specified <see cref="T:AA.Dapper.FluentMap.Conventions.Convention"/> to the configuration of AA.Dapper.FluentMap.
+        /// Adds the specified <see cref="T:Dapper.FluentMap.Conventions.Convention"/> to the configuration of Dapper.FluentMap.
         /// </summary>
         /// <typeparam name="TConvention">The type of the convention.</typeparam>
         /// <returns>
-        /// An instance of <see cref="T:AA.Dapper.FluentMap.Configuration.FluentConventionConfiguration"/>
+        /// An instance of <see cref="T:Dapper.FluentMap.Configuration.FluentConventionConfiguration"/>
         /// which allows configuration of the convention.
         /// </returns>
         public FluentConventionConfiguration AddConvention<TConvention>() where TConvention : Convention, new()

@@ -38,7 +38,7 @@ namespace AA.Dapper.FluentMap.Mapping
         where TPropertyMap : class, IPropertyMap
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:AA.Dapper.FluentMap.Mapping.PropertyMap"/> using
+        /// Initializes a new instance of the <see cref="T:Dapper.FluentMap.Mapping.PropertyMap"/> using
         /// the specified <see cref="T:System.Reflection.PropertyInfo"/> object representing the property to map.
         /// </summary>
         /// <param name="info">The <see cref="T:System.Reflection.PropertyInfo"/> object representing to the property to map.</param>
@@ -49,7 +49,7 @@ namespace AA.Dapper.FluentMap.Mapping
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:AA.Dapper.FluentMap.Mapping.PropertyMap"/> using
+        /// Initializes a new instance of the <see cref="T:Dapper.FluentMap.Mapping.PropertyMap"/> using
         /// the specified <see cref="T:System.Reflection.PropertyInfo"/> object representing the property to map
         /// and column name to map the property to.
         /// </summary>
@@ -62,7 +62,7 @@ namespace AA.Dapper.FluentMap.Mapping
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="T:AA.Dapper.FluentMap.Mapping.PropertyMap"/> using
+        /// Initializes a new instance of the <see cref="T:Dapper.FluentMap.Mapping.PropertyMap"/> using
         /// the specified <see cref="T:System.Reflection.PropertyInfo"/> object representing the property to map,
         /// column name to map the property to and a value indicating whether the mapping should be case sensitive.
         /// </summary>
@@ -112,7 +112,7 @@ namespace AA.Dapper.FluentMap.Mapping
         /// <summary>
         /// Marks the current property as ignored, resulting in the property not being mapped by Dapper.
         /// </summary>
-        /// <returns>The current <see cref="T:AA.Dapper.FluentMap.Mapping.PropertyMap"/> instance. This enables a fluent API.</returns>
+        /// <returns>The current <see cref="T:Dapper.FluentMap.Mapping.PropertyMap"/> instance. This enables a fluent API.</returns>
         public TPropertyMap Ignore()
         {
             Ignored = true;
@@ -156,7 +156,7 @@ namespace AA.Dapper.FluentMap.Mapping
     public class PropertyMap : PropertyMapBase<PropertyMap>, IPropertyMap
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AA.Dapper.FluentMap.Mapping.PropertyMap"/> class
+        /// Initializes a new instance of the <see cref="Dapper.FluentMap.Mapping.PropertyMap"/> class
         /// with the specified <see cref="System.Reflection.PropertyInfo"/> object.
         /// </summary>
         /// <param name="info">The information about the property.</param>
@@ -166,7 +166,7 @@ namespace AA.Dapper.FluentMap.Mapping
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AA.Dapper.FluentMap.Mapping.PropertyMap"/> class
+        /// Initializes a new instance of the <see cref="Dapper.FluentMap.Mapping.PropertyMap"/> class
         /// with the specified <see cref="System.Reflection.PropertyInfo"/> object and column name.
         /// </summary>
         /// <param name="info">The information about the property.</param>
@@ -177,7 +177,7 @@ namespace AA.Dapper.FluentMap.Mapping
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AA.Dapper.FluentMap.Mapping.PropertyMap"/> class
+        /// Initializes a new instance of the <see cref="Dapper.FluentMap.Mapping.PropertyMap"/> class
         /// with the specified <see cref="System.Reflection.PropertyInfo"/> object, column name
         /// and a value indicating whether the mapping should be case sensitive.
         /// </summary>

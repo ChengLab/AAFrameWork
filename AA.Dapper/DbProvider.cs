@@ -9,6 +9,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Reflection;
 using AA.Dapper.Util;
+using System.Collections.Concurrent;
 
 namespace AA.Dapper
 {
@@ -17,14 +18,13 @@ namespace AA.Dapper
 
         protected const string PropertyDbProvider = "quartz.dbprovider";
         //protected const string DbProviderSectionName = "quartz";
-        protected const string DbProviderResourceName = "AA.Dapper.dbproviders.properties";
+        protected const string DbProviderResourceName = "AA.Dapper.dbproviders.netstandard.properties";
 
 
         private readonly MethodInfo commandBindByNamePropertySetter;
 
         private static readonly IList<DbMetadataFactory> dbMetadataFactories;
-        private static readonly Dictionary<string, DbMetadata> dbMetadataLookup = new Dictionary<string, DbMetadata>();
-
+        private static readonly ConcurrentDictionary<string, DbMetadata> dbMetadataLookup = new ConcurrentDictionary<string, DbMetadata>();
         /// <summary>
         /// Parse metadata once in static constructor.
         /// </summary>

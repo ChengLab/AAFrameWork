@@ -2,26 +2,27 @@
 using System.Reflection;
 using AA.Dapper.FluentMap.Dommel.Mapping;
 using AA.Dapper.FluentMap.Mapping;
-using Dommel;
+using AA.Dapper.Dommel;
 
 namespace AA.Dapper.FluentMap.Dommel.Resolvers
 {
     /// <summary>
-    /// Implements the <see cref="DommelMapper.IColumnNameResolver"/> interface by using the configured mapping.
+    /// Implements the <see cref="IColumnNameResolver"/> interface by using the configured mapping.
     /// </summary>
-    public class DommelColumnNameResolver : DommelMapper.IColumnNameResolver
+    public class DommelColumnNameResolver : IColumnNameResolver
     {
+        private static readonly IColumnNameResolver DefaultResolver = new DefaultColumnNameResolver();
+
         /// <inheritdoc/>
         public string ResolveColumnName(PropertyInfo propertyInfo)
         {
             if (propertyInfo.DeclaringType != null)
             {
-                IEntityMap entityMap;
 #if NETSTANDARD1_3
-                if (FluentMapper.EntityMaps.TryGetValue(propertyInfo.DeclaringType, out entityMap))
+                if (FluentMapper.EntityMaps.TryGetValue(propertyInfo.DeclaringType, out var entityMap))
 
 #else
-                if (FluentMapper.EntityMaps.TryGetValue(propertyInfo.ReflectedType, out entityMap))
+                if (FluentMapper.EntityMaps.TryGetValue(propertyInfo.ReflectedType, out var entityMap))
 #endif
                 {
                     var mapping = entityMap as IDommelEntityMap;
@@ -34,9 +35,25 @@ namespace AA.Dapper.FluentMap.Dommel.Resolvers
                         }
                     }
                 }
+#if NETSTANDARD1_3
+                else if (FluentMapper.TypeConventions.TryGetValue(propertyInfo.DeclaringType, out var conventions))
+
+#else
+                else if (FluentMapper.TypeConventions.TryGetValue(propertyInfo.ReflectedType, out var conventions))
+#endif
+                {
+                    foreach (var convention in conventions)
+                    {
+                        var propertyMaps = convention.PropertyMaps.Where(m => m.PropertyInfo.Name == propertyInfo.Name).ToList();
+                        if (propertyMaps.Count == 1)
+                        {
+                            return propertyMaps[0].ColumnName;
+                        }
+                    }
+                }
             }
 
-            return DommelMapper.Resolvers.Default.ColumnNameResolver.ResolveColumnName(propertyInfo);
+            return DefaultResolver.ResolveColumnName(propertyInfo);
         }
     }
 }

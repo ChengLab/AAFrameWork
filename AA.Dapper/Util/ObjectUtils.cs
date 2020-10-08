@@ -7,7 +7,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace AA.Dapper.Util
 {
     /// <summary>
@@ -32,7 +31,6 @@ namespace AA.Dapper.Util
                 {
                     return newValue;
                 }
-
                 // try to convert using type converter
                 TypeConverter typeConverter = TypeDescriptor.GetConverter(requiredType);
                 if (typeConverter.CanConvertFrom(newValue.GetType()))

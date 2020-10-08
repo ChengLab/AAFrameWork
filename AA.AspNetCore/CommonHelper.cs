@@ -200,6 +200,7 @@ namespace AA.AspNetCore
             var instanceType = instance.GetType();
             var pi = instanceType.GetProperty(propertyName);
             if (pi == null)
+             
                 throw new AAException("No property '{0}' found on the instance of type '{1}'.", propertyName, instanceType);
             if (!pi.CanWrite)
                 throw new AAException("The property '{0}' on the instance of type '{1}' does not have a setter.", propertyName, instanceType);

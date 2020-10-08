@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AA.Dapper.Dommel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq.Expressions;
@@ -38,9 +39,9 @@ namespace AA.Dapper.Repositories
         /// <param name="predicate"></param>
         /// <param name="transaction"></param>
         /// <returns></returns>
-        bool DeleteMultiple(Expression<Func<TEntity, bool>> predicate);
+        int DeleteMultiple(Expression<Func<TEntity, bool>> predicate);
 
-        Task<bool> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate);
+        Task<int> DeleteMultipleAsync(Expression<Func<TEntity, bool>> predicate);
 
         #endregion
         #region Update
@@ -98,6 +99,11 @@ namespace AA.Dapper.Repositories
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate);
 
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
+        #endregion
+
+
+        #region  from
+        IEnumerable<TEntity> From(Action<SqlExpression<TEntity>> sqlBuilder);
         #endregion
     }
 }

@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using Dapper;
 using AA.Dapper.FluentMap.Configuration;
 using AA.Dapper.FluentMap.Conventions;
 using AA.Dapper.FluentMap.Mapping;
 using AA.Dapper.FluentMap.TypeMaps;
-using Dapper;
 
 namespace AA.Dapper.FluentMap
 {
     /// <summary>
-    /// Main entry point for AA.Dapper.FluentMap configuration.
+    /// Main entry point for Dapper.FluentMap configuration.
     /// </summary>
     public static class FluentMapper
     {
@@ -27,10 +27,10 @@ namespace AA.Dapper.FluentMap
         public static readonly ConcurrentDictionary<Type, IList<Convention>> TypeConventions = new ConcurrentDictionary<Type, IList<Convention>>();
 
         /// <summary>
-        /// Initializes AA.Dapper.FluentMap with the specified configuration.
+        /// Initializes Dapper.FluentMap with the specified configuration.
         /// This is method should be called when the application starts or when the first mapping is needed.
         /// </summary>
-        /// <param name="configure">A callback containing the configuration of AA.Dapper.FluentMap.</param>
+        /// <param name="configure">A callback containing the configuration of Dapper.FluentMap.</param>
         public static void Initialize(Action<FluentMapConfiguration> configure)
         {
             configure(_configuration);

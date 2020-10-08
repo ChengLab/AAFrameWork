@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net452;netstandard2.0</TargetFrameworks>
+    <TargetFrameworks>net452;netstandard2.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>ChengTian</Authors>
     <Company>AA</Company>
@@ -11,12 +11,12 @@
     <RepositoryUrl>https://github.com/ChengLab/AAFrameWork</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <Description>AA框架 Log4Net logger support</Description>
-    <Version>1.0.2</Version>
+    <Version>2.0.1</Version>
   </PropertyGroup>
 
 
 
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.0' ">
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
     <DefineConstants>$(DefineConstants);NETCORE</DefineConstants>
   </PropertyGroup>
 

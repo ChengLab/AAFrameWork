@@ -53,7 +53,7 @@ namespace AA.Dapper.FluentMap.Mapping
         /// for the specified property on <typeparamref name="TEntity"/>.
         /// </summary>
         /// <param name="expression">Expression to the property on <typeparamref name="TEntity"/>.</param>
-        /// <returns>The created <see cref="T:AA.Dapper.FluentMap.Mapping.PropertyMap"/> instance. This enables a fluent API.</returns>
+        /// <returns>The created <see cref="T:Dapper.FluentMap.Mapping.PropertyMap"/> instance. This enables a fluent API.</returns>
         /// <exception cref="T:System.Exception">when a duplicate mapping is provided.</exception>
         protected TPropertyMap Map(Expression<Func<TEntity, object>> expression)
         {
