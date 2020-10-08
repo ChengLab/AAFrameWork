@@ -103,6 +103,69 @@ IDapperRepository<UserInfo> userInfoRepository = new DapperRepository<UserInfo>(
    var user = userInfoRepository.Get(1);
    var result = userInfoRepository.Delete(user);
 ```
+###### 分页
+
+```
+var result = _userRepository.From(sql =>  
+            {  
+                sql.Select()  
+                   .Where(x=>x.UserName==input.UserName)  
+                   .Page(input.PageIndex, input.PageSize);  
+            });  
+```
+###### 事务
+
+```
+using (var dbTransaction = dapperContext.BeginTransaction())  
+ {  
+     try  
+     {  
+         var user = new UserInfo()  
+         {  
+             UserName = "chengTian",  
+             RealName = "成天",  
+             GmtCreate = DateTime.Now,  
+             GmtModified = DateTime.Now,  
+             LastLoginDate = DateTime.Now  
+         };  
+         userInfoRepository.Insert(user);  
+         userAlbumRepository.Insert(new UserAlbum  
+         {  
+             Pic = "image/one.jgp"  
+         });  
+         dapperContext.Commit();  
+     }  
+     catch (Exception ex)  
+     {  
+         dbTransaction.Rollback();  
+     }  
+ }  
+ 
+```
+###### 动态Expression
+
+```
+var where = DynamicWhereExpression.Init<User>();  
+if (input.RealName != "")  
+{  
+   where = where.And(x => x.RealName.Contains(input.RealName));  
+}  
+if (input.SysNo!=Guid.Empty)   
+{  
+    where = where.And(x=>x.SysNo==input.SysNo);  
+}  
+if (input.SysNos.Any())   
+{  
+    where = where.And(x=>input.SysNos.Contains(x.SysNo));  
+}  
+var result = _userRepository.From(sql =>  
+{  
+    sql.Select()  
+       .Where(where)  
+       .Page(input.PageIndex, input.PageSize);  
+});  
+```
+
 ###### 支持Dapper原生操作
 操作基本的封装都是单表的操作，可以满足一部分业务开发，有些业务场景编写sql还是比较合适的比如报表和一些复杂的查询，推荐使用原生dapper的操作
 
