@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AA.FrameWork;
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.ComponentModel;
@@ -103,7 +104,7 @@ namespace AA.Dapper.Util
                 {
                     //$"Could not parse property '{name}' into correct data type: {nfe.Message}", nfe);
 
-        }
+                }
             }
         }
 
@@ -128,9 +129,9 @@ namespace AA.Dapper.Util
                     SetPropertyValue(obj, propertyName, value);
                 }
                 catch (Exception nfe)
-                {
-                    //throw new SchedulerConfigException(
-                    //    $"Could not parse property '{name}' into correct data type: {nfe.Message}", nfe);
+                {//cant load dbdrive 
+                    throw new AAException(
+                        $"Could not parse property '{name}' into correct data type: {nfe.Message}", nfe);
                 }
             }
         }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace AA.Dapper
 {
     /// <summary>
-    /// Base class for the DbMetadata Factory implementations  （DbMetadata 工厂实现基类）
+    /// Base class for the DbMetadata Factory implementations  
     /// </summary>
     public abstract class DbMetadataFactory
     {

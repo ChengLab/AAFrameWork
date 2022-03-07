@@ -101,7 +101,16 @@ namespace AA.Dapper.Repositories
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate);
         #endregion
 
+        #region Count
+        long Count();
 
+        Task<long> CountAsync();
+
+        long Count(Expression<Func<TEntity, bool>> predicate);
+
+        Task<long> CountAsync(Expression<Func<TEntity, bool>> predicate);
+
+        #endregion
         #region  from
         IEnumerable<TEntity> From(Action<SqlExpression<TEntity>> sqlBuilder);
         #endregion

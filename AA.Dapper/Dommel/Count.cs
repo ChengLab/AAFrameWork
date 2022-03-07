@@ -85,6 +85,10 @@ namespace AA.Dapper.Dommel
             sql += CreateSqlExpression<TEntity>(sqlBuilder)
                 .Where(predicate)
                 .ToSql(out parameters);
+            if (sql.IndexOf("(True") != -1)
+            {
+                sql = sql.Replace("(True", "(1=1");
+            }
             return sql;
         }
     }

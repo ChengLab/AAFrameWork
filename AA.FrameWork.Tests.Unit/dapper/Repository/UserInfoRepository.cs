@@ -10,9 +10,15 @@ namespace AADemo.DataAccess.Repository
 {
     public class UserInfoRepository : DapperRepository<UserInfo>, IUserInfoRepository
     {
+
+        public IDapperContext dapperContext;
+        public UserInfoRepository(IDapperContext dapperContext) : base(dapperContext)
+        {
+            this.dapperContext = dapperContext;
+        }
         public IEnumerable<UserInfo> QueryAll()
         {
-            var result = DapperContext.Current.DataBase.Query<UserInfo>("SELECT * from  [Sys_UserInfo]");
+            var result = dapperContext.DataBase.Query<UserInfo>("SELECT * from  [Sys_UserInfo]");
             return result;
         }
     }

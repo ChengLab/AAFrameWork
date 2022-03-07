@@ -1,33 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
+﻿ 
 using Microsoft.Extensions.DependencyInjection;
- 
+using System;
+using System.Collections.Generic;
+using System.Text;
+using Autofac;
+using Microsoft.AspNetCore.Builder;
 
-namespace AA.AspNetCore.Infrastructure
+namespace AA.FrameWork.Engine
 {
-    /// <summary>
-    /// Classes implementing this interface can serve as a portal for the various services composing the Nop engine. 
-    /// Edit functionality, modules and implementations access most Nop functionality through this interface.
-    /// </summary>
-    public interface IEngine
+   public interface IEngine
     {
-        /// <summary>
-        /// Add and configure services
-        /// </summary>
-        /// <param name="services">Collection of service descriptors</param>
-        /// <param name="configuration">Configuration of the application</param>
-        /// <param name="nopConfig">Nop configuration parameters</param>
-        /// <returns>Service provider</returns>
-        IServiceProvider ConfigureServices(IServiceCollection services, IConfiguration configuration);
-
         /// <summary>
         /// Configure HTTP request pipeline
         /// </summary>
-        /// <param name="application">Builder for configuring an application's request pipeline</param>
+        /// <param name="application"></param>
         void ConfigureRequestPipeline(IApplicationBuilder application);
-
         /// <summary>
         /// Resolve dependency
         /// </summary>
@@ -55,5 +42,6 @@ namespace AA.AspNetCore.Infrastructure
         /// <param name="type">Type of service</param>
         /// <returns>Resolved service</returns>
         object ResolveUnregistered(Type type);
+
     }
 }

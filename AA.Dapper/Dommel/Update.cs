@@ -57,7 +57,10 @@ namespace AA.Dapper.Dommel
                 var columnNames = typeProperties.Select(p => $"{Resolvers.Column(p, sqlBuilder)} = {sqlBuilder.PrefixParameter(p.Name)}").ToArray();
                 var whereClauses = keyProperties.Select(p => $"{Resolvers.Column(p.Property, sqlBuilder)} = {sqlBuilder.PrefixParameter(p.Property.Name)}");
                 sql = $"update {tableName} set {string.Join(", ", columnNames)} where {string.Join(" and ", whereClauses)}";
-
+                if (sql.IndexOf("(True") != -1)
+                {
+                    sql = sql.Replace("(True", "(1=1");
+                }
                 QueryCache.TryAdd(cacheKey, sql);
             }
 

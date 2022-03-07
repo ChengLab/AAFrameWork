@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace AA.AspNetCore.Infrastructure
+namespace AA.FrameWork.Engine
 {
     /// <summary>
     /// Classes implementing this interface provide information about types 

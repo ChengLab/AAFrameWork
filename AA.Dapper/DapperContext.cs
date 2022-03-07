@@ -1,4 +1,5 @@
-﻿using AA.Dapper.Util;
+﻿using AA.Dapper.Advanced;
+using AA.Dapper.Util;
 using AA.FrameWork.Extensions;
 using AA.FrameWork.Util;
 using System;
@@ -11,82 +12,14 @@ namespace AA.Dapper
 {
     public class DapperContext : IDapperContext
     {
-
-        public const string PropertyDataSourcePrefix = "aa.dataSource";
-        public const string PropertyDataSourceProvider = "provider";
-        public const string PropertyDataSourceConnectionString = "connectionString";
-        private static readonly string contextName = "_AADapperContext_";
-
-        private PropertiesParser cfg;
-        private readonly string _connectionString;
         private IDbConnection _connection = null;
-        public IDbTransaction dbTransaction = null;
-        public static DapperContext Current
-        {
-            get {
+        private IDbTransaction _dbTransaction = null;
 
-                object obj = ForCallContext.GetData(contextName);
-                if (obj==null)
-                {
-                    throw new Exception("AA dapper context is empty");
-                }
-                return (DapperContext)obj;
-            }
-        }
-        public DapperContext(NameValueCollection props)
-        {
-            IDbConnectionManager dbMgr = null;
-            cfg = new PropertiesParser(props);
-            
-            var dsNames = cfg.GetPropertyGroups(PropertyDataSourcePrefix);
-            foreach (string dataSourceName in dsNames)
-            {
-                string datasourceKey = "{0}.{1}".FormatInvariant(PropertyDataSourcePrefix, dataSourceName);
-                NameValueCollection propertyGroup = cfg.GetPropertyGroup(datasourceKey, true);
-                PropertiesParser pp = new PropertiesParser(propertyGroup);
-                string dsProvider = pp.GetStringProperty(PropertyDataSourceProvider, null);
-                string dsConnectionString = pp.GetStringProperty(PropertyDataSourceConnectionString, null);
-
-                if (dsProvider == null)
-                {
-                    //initException = new SchedulerException("Provider not specified for DataSource: {0}".FormatInvariant(dataSourceName));
-                    //throw initException;
-                }
-                if (dsConnectionString == null)
-                {
-                    //initException = new SchedulerException("Connection string not specified for DataSource: {0}".FormatInvariant(dataSourceName));
-                    //throw initException;
-                }
-                try
-                {
-                    DbProvider dbp = new DbProvider(dsProvider, dsConnectionString);
-                    dbp.Initialize();
-
-                    dbMgr = DBConnectionManager.Instance;
-                    dbMgr.AddConnectionProvider(dataSourceName, dbp);
-                    this.DataSource = dataSourceName;
-                    ForCallContext.SetData(contextName, this);
-                }
-                catch (Exception exception)
-                {
-                    //initException = new SchedulerException("Could not Initialize DataSource: {0}".FormatInvariant(dataSourceName), exception);
-                    //throw initException;
-                }
-            }
-
-
-            //_connectionString = nameOrConnectionString;
-        }
-
-        /// <summary>
-        /// Get or set the datasource name.
-        /// </summary>
-        public string DataSource { get; set; }
         public DataBase DataBase
         {
             get
             {
-                return new DataBase();
+                return new DataBase(this);
             }
         }
         /// <summary>
@@ -99,27 +32,20 @@ namespace AA.Dapper
             {
                 if (_connection == null)
                 {
-                    //_connection = new SqlConnection(_connectionString);
-                    _connection = ConnectionManager.GetConnection(DataSource);
+                    var prefixDataSource = DbContextHolder.GetDbSourceMode();
+                    _connection = ConnectionManager.GetConnection(prefixDataSource);
                 }
                 return _connection;
             }
         }
+
+        public IDbTransaction dbTransaction { get { return _dbTransaction; } }
         public void Dispose()
         {
             if (_connection != null && _connection.State == ConnectionState.Open)
                 _connection.Close();
         }
-
-        public IDbConnection GetCurrentConnection()
-        {
-            return _connection;
-        }
-
-        public IDbTransaction GetCurrentTransaction()
-        {
-            return dbTransaction;
-        }
+        
 
         public IDbTransaction BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.ReadCommitted)
         {
@@ -127,19 +53,19 @@ namespace AA.Dapper
             {
                 Connection.Open();
             }
-            dbTransaction = Connection.BeginTransaction(isolationLevel);
+            _dbTransaction = Connection.BeginTransaction(isolationLevel);
             return dbTransaction;
         }
 
         public void Commit()
         {
-            dbTransaction.Commit();
-            dbTransaction = null;
+            _dbTransaction.Commit();
+            _dbTransaction = null;
         }
 
         public void RollBack()
         {
-            dbTransaction.Rollback();
+            _dbTransaction.Rollback();
         }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AA.Dapper.Advanced;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AA.Dapper.Util
 {
-   public class DBConnectionManager : IDbConnectionManager
+    public class DBConnectionManager : IDbConnectionManager
     {
         private static readonly DBConnectionManager instance = new DBConnectionManager();
         //private static readonly ILog log = LogProvider.GetLogger(typeof(DBConnectionManager));
@@ -61,7 +62,7 @@ namespace AA.Dapper.Util
 		public virtual void Shutdown(string dsName)
         {
             IDbProvider provider = GetDbProvider(dsName);
-           // provider.Shutdown();
+            // provider.Shutdown();
         }
 
         public DbMetadata GetDbMetadata(string dsName)
@@ -81,10 +82,21 @@ namespace AA.Dapper.Util
                 throw new ArgumentException("DataSource name cannot be null or empty", nameof(dsName));
             }
 
-            IDbProvider provider;
+            IDbProvider provider = null;
             lock (syncRoot)
             {
-                providers.TryGetValue(dsName, out provider);
+                string dsKey = "";
+                if (dsName == "master")
+                {
+                    dsKey = providers.Keys.FirstOrDefault(x=>x.StartsWith("master"));
+                }
+                else 
+                {
+                    //TODO random more slave
+                    dsKey = providers.Keys.FirstOrDefault(x => x.StartsWith("slave"));
+                }
+
+                providers.TryGetValue(dsKey, out provider);
             }
 
             if (provider == null)

@@ -1,12 +1,13 @@
-﻿using Autofac;
+﻿
+using Autofac;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AA.AspNetCore.Infrastructure.DependencyManagement
+namespace AA.FrameWork.Engine
 {
     /// <summary>
-    /// Dependency registrar interface
+    /// 依赖项注册器接口 Dependency registrar interface
     /// </summary>
     public interface IDependencyRegistrar
     {

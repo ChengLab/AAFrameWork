@@ -9,8 +9,14 @@ using System.Text;
 
 namespace AADemo.Domain.Repository
 {
-    public class VillageRepository:DapperRepository<Village>, IVillageRepository
+    public class VillageRepository :DapperRepository<Village>, IVillageRepository
     {
-      
+        public IDapperContext dapperContext;
+        public VillageRepository(IDapperContext dapperContext) :base(dapperContext) 
+        {
+            this.dapperContext = dapperContext;
+        }
+     
+
     }
 }

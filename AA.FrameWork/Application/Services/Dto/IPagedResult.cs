@@ -10,5 +10,6 @@ namespace AA.FrameWork.Application.Services.Dto
         /// Total count of Items.
         /// </summary>
         int TotalCount { get; set; }
+
     }
 }

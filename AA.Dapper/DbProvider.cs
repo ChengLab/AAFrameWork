@@ -16,8 +16,7 @@ namespace AA.Dapper
     public class DbProvider : IDbProvider
     {
 
-        protected const string PropertyDbProvider = "quartz.dbprovider";
-        //protected const string DbProviderSectionName = "quartz";
+        protected const string PropertyDbProvider = "aa.dbprovider";
         protected const string DbProviderResourceName = "AA.Dapper.dbproviders.netstandard.properties";
 
 
@@ -31,8 +30,7 @@ namespace AA.Dapper
         static  DbProvider()
         {
             dbMetadataFactories = new List<DbMetadataFactory>
-            {
-                //new ConfigurationBasedDbMetadataFactory(DbProviderSectionName, PropertyDbProvider),
+            {         
                 new EmbeddedAssemblyResourceDbMetadataFactory(DbProviderResourceName, PropertyDbProvider)
             };
         }

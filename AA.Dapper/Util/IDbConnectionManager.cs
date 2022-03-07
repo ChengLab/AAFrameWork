@@ -9,7 +9,7 @@ namespace AA.Dapper.Util
 {
     /// <summary>
     ///  Manages a collection of IDbProviders, and provides transparent access
-    ///  to their database.(管理idb提供者集合，提供)
+    ///  to their database.
     /// </summary>
     public interface IDbConnectionManager
     {

@@ -15,7 +15,7 @@ namespace AA.Dapper.Util
         internal readonly NameValueCollection props;
 
         /// <summary>
-        /// Gets the underlying properties.（获取基础特性）
+        /// Gets the underlying properties.
         /// </summary>
         /// <value>The underlying properties.</value>
 		public virtual NameValueCollection UnderlyingProperties => props;

@@ -8,13 +8,12 @@ namespace AA.Dapper
 {
     public interface IDapperContext : IDisposable
     {
+        IDbTransaction dbTransaction { get; }
         IDbConnection Connection { get; }
-        IDbConnection GetCurrentConnection();
-        IDbTransaction GetCurrentTransaction();
         IDbTransaction BeginTransaction(IsolationLevel isolationLevel = IsolationLevel.RepeatableRead);
         void Commit();
         void RollBack();
-         DataBase DataBase { get; }
+        DataBase DataBase { get; }
 
     }
 }

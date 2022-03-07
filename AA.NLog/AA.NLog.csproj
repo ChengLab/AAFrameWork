@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net452;netstandard2.1</TargetFrameworks>
+    <TargetFrameworks>net6.0;netcoreapp3.1</TargetFrameworks>
     <Description>支持 NLog</Description>
     <PackageProjectUrl>https://github.com/ChengLab/AAFrameWork</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
@@ -12,10 +12,7 @@
     <AssemblyVersion>2.0.1.0</AssemblyVersion>
   </PropertyGroup>
 
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'netstandard2.1' ">
-    <DefineConstants>$(DefineConstants);NETCORE</DefineConstants>
-  </PropertyGroup>
+ 
   
   <ItemGroup>
     <PackageReference Include="NLog" Version="4.6.8" />

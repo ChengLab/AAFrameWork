@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Authors>MingChengLi</Authors>
+    <TargetFrameworks>net6.0;netcoreapp3.1</TargetFrameworks>
+    <Authors>LiMingCheng</Authors>
     <Company>AA</Company>
     <Product>AA</Product>
-    <Description>AA.Dapper 基于dapper+dommel 开发 ， 支持工作单元、仓储模式和原生dapper的操作</Description>
+    <Description>AA.Dapper 基于dapper+dommel 开发 ， 支持工作单元、仓储模式、读写分离和原生dapper的操作</Description>
     <PackageProjectUrl>https://github.com/ChengLab/AAFrameWork</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ChengLab/AAFrameWork</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
@@ -13,21 +13,20 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyVersion>2.0.5.0</AssemblyVersion>
     <FileVersion>2.0.5.0</FileVersion>
-    <Version>2.0.5</Version>
+    <Version>5.0.2</Version>
     <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="dbproviders.netstandard.properties" />
-    <None Remove="dbproviders.properties" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="dbproviders.netstandard.properties" />
-    <EmbeddedResource Include="dbproviders.properties" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac.Extras.DynamicProxy" Version="6.0.0" />
     <PackageReference Include="Dapper" Version="1.60.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.7.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />

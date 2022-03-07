@@ -11,11 +11,7 @@ namespace AA.Log4Net
     {
         public FrameWork.Logging.ILog Get(string name)
         {
-#if NETCORE
             var logger = LogManager.GetLogger(System.Reflection.Assembly.GetEntryAssembly(), name);
-#else
-            var logger = LogManager.GetLogger(name);
-#endif
             return new Log4NetLog(logger);
         }
 
@@ -33,15 +29,9 @@ namespace AA.Log4Net
         public static void Use(string file)
         {
             Logger.UseLogger(new Log4NetLogger());
-#if NETCORE
             file = Path.Combine(AppContext.BaseDirectory, file);
             var logRepository = LogManager.GetRepository(System.Reflection.Assembly.GetEntryAssembly());
             XmlConfigurator.Configure(logRepository, new FileInfo(file));
-
-#else
-            file = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, file);
-            XmlConfigurator.Configure(new FileInfo(file));
-#endif
         }
     }
 }

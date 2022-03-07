@@ -19,5 +19,14 @@ namespace AA.Dapper.Configuration
                 config.ForDommel();
             });
         }
+        public static void Init(Action<FluentMapConfiguration> configure)
+        {
+            FluentMapper.Initialize(config =>
+            {
+                configure.Invoke(config);
+                config.ForDommel();
+            });
+        }
+
     }
 }

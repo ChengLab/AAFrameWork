@@ -49,6 +49,11 @@ namespace AA.FrameWork
         {
         }
 
+
+        public AAException(Exception cause) : base(cause.Message, cause)
+        {
+        }
+
         /// <summary>
         /// Initializes a new instance of the Exception class with a specified error message and a reference to the inner exception that is the cause of this exception.
         /// </summary>

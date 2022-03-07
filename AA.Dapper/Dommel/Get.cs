@@ -257,6 +257,10 @@ namespace AA.Dapper.Dommel
             var keyColumns = Resolvers.KeyProperties(type).Select(p => Resolvers.Column(p.Property, connection));
             var orderBy = "order by " + string.Join(", ", keyColumns);
             sql += GetSqlBuilder(connection).BuildPaging(orderBy, pageNumber, pageSize);
+            if (sql.IndexOf("(True") != -1)
+            {
+                sql = sql.Replace("(True", "(1=1");
+            }
             return sql;
         }
     }
